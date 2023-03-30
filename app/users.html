@@ -21,7 +21,7 @@
 
 </head>
 
-<body ng-app="LuxuryShopAdmin" ng-controller="UserCtrl" ng-init="LoadUser()">
+<body ng-app="LuxuryShopAdmin" ng-controller="UserCtrl" >
     <div class="app">
         <div class="layout">
             <!-- Header START -->
@@ -488,6 +488,63 @@
             <!-- Page Container START -->
             <div class="page-container">
                 <div class="main-content">
+                    <form>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Họ tên : </label>
+                            <input ng-model="FullName" type="text" class="form-control" id="FullName" placeholder="Họ tên">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Ngày sinh (yyyy-mm-dd) :</label>
+                            <input ng-model="BirthDay" type="text" class="form-control" id="BirthDay" placeholder="Ngày sinh">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Gender : </label>
+                            <input ng-model="Gender" type="text" class="form-control" id="Gender" placeholder="Giới tính">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Ảnh đại diện : </label>
+                            <input ng-model="Thumb" type="file" file="file" class="form-control" id="Thumb" placeholder="Ảnh đại diện">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Địa chỉ :</label>
+                            <input ng-model="Address" type="text" class="form-control" id="Address" placeholder="Địa chỉ">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Email : </label>
+                            <input ng-model="Email" type="text" class="form-control" id="Email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Số điện thoại : </label>
+                            <input ng-model="Phone" type="text" class="form-control" id="Phone" placeholder="Số điện thoại">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Tài khoản : </label>
+                            <input ng-model="UserName" type="text" class="form-control" id="UserName" placeholder="Tài khoản">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Mật khẩu : </label>
+                            <input ng-model="Password" type="text" class="form-control" id="Password" placeholder="Mật khẩu">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Quyền : </label>
+                            <select ng-model="RoleID" style="width:100%;border: 1px solid #d5d5d5;box-shadow: none!important;
+                            color: #858585;    padding: 3px 4px;
+                            height: 40px;" class="" data-placeholder="Chọn loại quyền ...">
+                                <option ng-repeat="x in listRole"  value="{{x.roleID}}">{{x.roleName}}</option>
+                            </select>
+                        </div>
+                        <button ng-click="Save()" class="btn btn-info" type="button">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            {{submit}}
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            Reset
+                        </button>
+                    </form>
+                    <br><hr>
                     <table id="data-table" class="table">
                         <thead>
                             <tr>
@@ -539,10 +596,8 @@
                                     {{x.roleName}}
                                 </td>
                                 <td>
-                                    <span  class="badge badge-info" style="cursor: pointer;padding: 8px;"> <i class="fas fa-info-circle"></i></span>
-                                    <span  class="badge badge-primary" style="cursor: pointer;padding: 8px;"> <i class="far fa-edit"></i></span>
-                                    <span  class="badge badge-danger" style="cursor: pointer;padding: 8px;"> <i class="fas fa-trash-alt"></i></span>
-                                    
+                                    <button ng-click="Sua(x)" class="btn btn-warning btn-tone m-r-5 badge badge-primary" style="cursor: pointer;padding: 8px;"> <i class="far fa-edit"></i></button>
+                                    <button ng-click="Xoa(x)" class="btn btn-danger btn-tone m-r-5 badge badge-danger" style="cursor: pointer;padding: 8px;"> <i class="fas fa-trash-alt"></i></button> 
                                 </td>
                             </tr>
                         </tbody>
