@@ -3,6 +3,9 @@ app.controller("UserCtrl", function ($scope, $http,$window){
     if($window.sessionStorage.getItem("user")==null){
         $window.location.href = '/app/login-3.html';
     }
+    var user = JSON.parse($window.sessionStorage.getItem("user"));
+    $scope.UserName = user.username;
+    
     $scope.host = current_img;
 
     $scope.UserID;

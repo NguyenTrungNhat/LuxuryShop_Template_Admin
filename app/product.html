@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Người dùng</title>
+    <title>Sản phẩm</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png">
@@ -17,11 +17,11 @@
     <link href="assets/css/app.min.css" rel="stylesheet">
     <script src="assets/angular/angular.min.js"></script>
     <script src="assets/angular/global.js"></script>
-	<script src="assets/angular/user.js"></script>
+	<script src="assets/angular/product.js"></script>
 
 </head>
 
-<body ng-app="LuxuryShopAdmin" ng-controller="UserCtrl" >
+<body ng-app="LuxuryShopAdmin" ng-controller="ProductsCtrl" >
     <div class="app">
         <div class="layout">
             <!-- Header START -->
@@ -191,21 +191,21 @@
             <div class="side-nav">
                 <div class="side-nav-inner">
                     <ul class="side-nav-menu scrollable">
-                        <li class="nav-item dropdown open" style="background-color: rgba(63,135,245,0.15);">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
+                        <li class="nav-item dropdown" >
+                            <a class="dropdown-toggle" href="/app/users.html">
                                 <span class="icon-holder">
                                     <i class="anticon anticon-dashboard"></i>
                                 </span>
                                 <span class="title">Người dùng</span>
                             </a> 
                         </li>
-                        <li class="nav-item dropdown" >
-                            <a class="dropdown-toggle" href="/app/product.html">
+                        <li class="nav-item dropdown open" style="background-color: rgba(63,135,245,0.15);">
+                            <a class="dropdown-toggle" href="javascript:void(0);">
                                 <span class="icon-holder">
                                     <i class="anticon anticon-appstore"></i>
                                 </span>
                                 <span class="title">Sản phẩm</span>
-                            </a> 
+                            </a>
                         </li>
                         <li class="nav-item dropdown" >
                             <a class="dropdown-toggle" href="/app/product.html">
@@ -273,48 +273,59 @@
                 <div class="main-content">
                     <form>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Họ tên : </label>
-                            <input ng-model="FullName" type="text" class="form-control" id="FullName" placeholder="Họ tên">
+                            <label for="formGroupExampleInput">Mã loại sản phẩm : </label>
+                            <input ng-model="CatID" type="text" class="form-control" id="CatID" placeholder="Mã loại sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">Ngày sinh (yyyy-mm-dd) :</label>
-                            <input ng-model="BirthDay" type="text" class="form-control" id="BirthDay" placeholder="Ngày sinh">
+                            <label for="formGroupExampleInput2">Giảm giá :</label>
+                            <input ng-model="Discount" type="text" class="form-control" id="Discount" placeholder="Giảm giá">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">Gender : </label>
-                            <input ng-model="Gender" type="text" class="form-control" id="Gender" placeholder="Giới tính">
+                            <label for="formGroupExampleInput2">Số lượng trong kho : </label>
+                            <input ng-model="UnitslnStock" type="text" class="form-control" id="UnitslnStock" placeholder="Số lượng trong kho">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">Ảnh đại diện : </label>
-                            <input ng-model="Thumb" type="file" file="file" class="form-control" id="Thumb" placeholder="Ảnh đại diện">
+                            <label for="formGroupExampleInput2">Tên sản phẩm :</label>
+                            <input ng-model="Name" type="text" class="form-control" id="Name" placeholder="Tên sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">Địa chỉ :</label>
-                            <input ng-model="Address" type="text" class="form-control" id="Address" placeholder="Địa chỉ">
+                            <label for="formGroupExampleInput2">Chi tiết sản phẩm : </label>
+                            <input ng-model="Details" type="text" class="form-control" id="Details" placeholder="Chi tiết sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">Email : </label>
-                            <input ng-model="Email" type="text" class="form-control" id="Email" placeholder="Email">
+                            <label for="formGroupExampleInput2">Mô tả sản phẩm : </label>
+                            <input ng-model="Description" type="text" class="form-control" id="Description" placeholder="Mô tả sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">Số điện thoại : </label>
-                            <input ng-model="Phone" type="text" class="form-control" id="Phone" placeholder="Số điện thoại">
+                            <label for="formGroupExampleInput2">Mô tả ngắn : </label>
+                            <input ng-model="SeoDescription" type="text" class="form-control" id="SeoDescription" placeholder="Mô tả ngắn">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">Tài khoản : </label>
-                            <input ng-model="UserName" type="text" class="form-control" id="UserName" placeholder="Tài khoản">
+                            <label for="formGroupExampleInput2">Tiêu đề : </label>
+                            <input ng-model="Title" type="text" class="form-control" id="Title" placeholder="Tiêu đề">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">Mật khẩu : </label>
-                            <input ng-model="Password" type="text" class="form-control" id="Password" placeholder="Mật khẩu">
+                            <label for="formGroupExampleInput2">Tiêu đề ngắn : </label>
+                            <input ng-model="SeoTitle" type="text" class="form-control" id="SeoTitle" placeholder="Tiêu đề ngắn">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">Quyền : </label>
-                            <select ng-model="RoleID" style="width:100%;border: 1px solid #d5d5d5;box-shadow: none!important;
-                            color: #858585;    padding: 3px 4px;
-                            height: 40px;" class="" data-placeholder="Chọn loại quyền ...">
-                                <option ng-repeat="x in listRole"  value="{{x.roleID}}">{{x.roleName}}</option>
-                            </select>
+                            <label for="formGroupExampleInput2">Ngôn ngữ : </label>
+                            <input ng-model="LanguageId" type="text" class="form-control" id="LanguageId" placeholder="Ngôn ngữ">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Tên gọi ngắn sản phẩm : </label>
+                            <input ng-model="SeoAlias" type="text" class="form-control" id="SeoAlias" placeholder="Tên gọi ngắn sản phẩm">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Giá : </label>
+                            <input ng-model="Price" type="text" class="form-control" id="Price" placeholder="Giá">
+                        </div>
+
+                    
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Hình ảnh sản phẩm : </label>
+                            <input ng-model="ThumbnailImage" type="file" file="file" class="form-control" id="ThumbnailImage" placeholder="Ảnh sản phẩm">
                         </div>
                         <button ng-click="Save()" class="btn btn-info" type="button">
                             <i class="ace-icon fa fa-check bigger-110"></i>
@@ -328,63 +339,84 @@
                         </button>
                     </form>
                     <br><hr>
-                    <table id="data-table" class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    UserID
-                                </th>
-                                <th>
-                                    FullName
-                                </th>
-                                <th>
-                                    Gender
-                                </th>
-                                <th>
-                                    Thumb
-                                </th>
-                                <th>
-                                    UserName
-                                </th>
-                                <th>
-                                    Password
-                                </th>
-                                <th>
-                                    RoleName
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="x in listUser">
-                                <td>
-                                    {{x.userID}}
-                                </td>
-                                <td>
-                                    {{x.fullName}}
-                                </td>
-                                <td>
-                                    {{x.gender}}
-                                </td>
-                                <td>
-                                    {{x.thumb}}
-                                </td>
-                                <td>
-                                    {{x.userName}}
-                                </td>
-                                <td>
-                                    {{x.password}}
-                                </td>
-                                <td>
-                                    {{x.roleName}}
-                                </td>
-                                <td>
-                                    <button ng-click="Sua(x)" class="btn btn-warning btn-tone m-r-5 badge badge-primary" style="cursor: pointer;padding: 8px;"> <i class="far fa-edit"></i></button>
-                                    <button ng-click="Xoa(x)" class="btn btn-danger btn-tone m-r-5 badge badge-danger" style="cursor: pointer;padding: 8px;"> <i class="fas fa-trash-alt"></i></button> 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div style="overflow: scroll;">
+                        <table id="data-table" class="table" >
+                            <thead>
+                                <tr>
+                                    <th>
+                                        ProductID
+                                    </th>
+                                    <th>
+                                        CatID
+                                    </th>
+                                    <th>
+                                        Discount
+                                    </th>
+                                    <th>
+                                        DateCreated
+                                    </th>
+                                    <th>
+                                        DateModified
+                                    </th>
+                                    <th>
+                                        BestSellers
+                                    </th>
+                                    <th>
+                                        HomeFlag
+                                    </th>
+                                    <th>
+                                        Title
+                                    </th>
+                                    <th>
+                                        UnitsInStock
+                                    </th>
+                                    <th>
+                                        Active
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in listProducts">
+                                    <td>
+                                        {{x.productID}}
+                                    </td>
+                                    <td>
+                                        {{x.catID}}
+                                    </td>
+                                    <td>
+                                        {{x.discount}}
+                                    </td>
+                                    <td>
+                                        {{x.dateCreated}}
+                                    </td>
+                                    <td>
+                                        {{x.dateModified}}
+                                    </td>
+                                    <td>
+                                        {{x.bestSellers}}
+                                    </td>
+                                    <td>
+                                        {{x.homeFlag}}
+                                    </td>
+                                    <td>
+                                        {{x.title}}
+                                    </td>
+                                    <td>
+                                        {{x.unitsInStock}}
+                                    </td>
+                                    <td>
+                                        {{x.active}}
+                                    </td>
+    
+                                    <td>
+                                        <button ng-click="Sua(x)" class="btn btn-warning btn-tone m-r-5 badge badge-primary" style="cursor: pointer;padding: 8px;"> <i class="far fa-edit"></i></button>
+                                        <button ng-click="Xoa(x)" class="btn btn-danger btn-tone m-r-5 badge badge-danger" style="cursor: pointer;padding: 8px;"> <i class="fas fa-trash-alt"></i></button> 
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 
@@ -465,7 +497,7 @@
                                         <img src="assets/images/avatars/thumb-1.jpg" alt="">
                                     </div>
                                     <div class="m-l-15">
-                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Erin Gonzales</a>
+                                        <p class="m-b-0 text-dark font-weight-semibold">{{UserName}}</p>
                                         <p class="m-b-0 text-muted font-size-13">UI/UX Designer</p>
                                     </div>
                                 </div>
