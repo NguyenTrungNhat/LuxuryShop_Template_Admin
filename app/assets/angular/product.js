@@ -14,6 +14,7 @@ app.controller("ProductsCtrl", function ($scope, $http, $window) {
     $scope.UnitslnStock;
     $scope.Name;
     $scope.Details;
+    $scope.editorData;
     $scope.Description;
     $scope.SeoDescription;
     $scope.Title;
@@ -48,7 +49,7 @@ app.controller("ProductsCtrl", function ($scope, $http, $window) {
             formData.append('Discount', Number($scope.Discount));
             formData.append('UnitslnStock', Number($scope.UnitslnStock));
             formData.append('Name', $scope.Name);
-            formData.append('Details', $scope.Details);
+            formData.append('Details', $scope.editorData);
             formData.append('Description', $scope.Description);
             formData.append('SeoDescription', $scope.SeoDescription);
             formData.append('Title', $scope.Title);
@@ -76,7 +77,7 @@ app.controller("ProductsCtrl", function ($scope, $http, $window) {
             formData.append('LanguageId', $scope.LanguageId);
             formData.append('Name', $scope.Name);
             formData.append('Description', $scope.Description);
-            formData.append('Details',  $scope.Details);
+            formData.append('Details',  $scope.editorData);
             formData.append('SeoDescription', $scope.SeoDescription);
             formData.append('SeoTitle', $scope.SeoTitle);
             formData.append('SeoAlias', $scope.SeoAlias);
@@ -130,4 +131,31 @@ app.controller("ProductsCtrl", function ($scope, $http, $window) {
     };
 
     $scope.LoadProduct();
+    
 });
+
+app.directive('ckeditor', () => {
+    return {
+      require: '?ngModel',
+      link: function (scope, element, attr, ngModel) {
+        if (!ngModel) return;
+         ClassicEditor
+          .create(element[0])
+          .then(editor => {
+            editor.model.document.on('change:data', () => {
+              ngModel.$setViewValue(editor.getData());
+              // Only `$apply()` when there are changes, otherwise it will be an infinite digest cycle
+              if (editor.getData() !== ngModel.$modelValue) {
+                scope.$apply();
+              }
+            });
+            ngModel.$render = () => {
+              editor.setData(ngModel.$modelValue);
+            };
+            scope.$on('$destroy', () => {
+              editor.destroy();
+            });
+          });
+      }
+    };
+  });
