@@ -1,12 +1,12 @@
 var app = angular.module('LuxuryShopAdmin',[]);
 app.controller("UserCtrl", function ($scope, $http,$window){
+    $scope.current_img = _current_img;
     if($window.sessionStorage.getItem("user")==null){
         $window.location.href = '/app/login-3.html';
     }
     var user = JSON.parse($window.sessionStorage.getItem("user"));
     $scope.UserName = user.username;
     
-    $scope.host = current_img;
 
     $scope.page = 1;
     $scope.pageSize = 10;

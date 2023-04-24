@@ -1,5 +1,6 @@
 var app = angular.module('LuxuryShopAdmin', []);
 app.controller("UserCtrl", function ($scope, $http, $window) {
+    $scope.current_img = _current_img;
     var keyproduct = 'ProductID';
     $scope.id = window.location.search.substring(window.location.search.indexOf(keyproduct) + keyproduct.length + 1);
     console.log($scope.id);
@@ -8,8 +9,6 @@ app.controller("UserCtrl", function ($scope, $http, $window) {
     }
     var user = JSON.parse($window.sessionStorage.getItem("user"));
     $scope.UserName = user.username;
-
-    $scope.host = current_img;
 
     $scope.ListProductImageID;
     $scope.Caption;
