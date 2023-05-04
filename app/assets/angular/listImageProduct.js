@@ -8,7 +8,7 @@ app.controller("UserCtrl", function ($scope, $http,$window){
     $scope.UserName = user.username;
     
 
-    $scope.page = 1;
+    $scope.page = 2;
     $scope.pageSize = 10;
     $scope.listProducts;
     $scope.LoadProduct = function () {
