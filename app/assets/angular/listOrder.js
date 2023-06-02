@@ -13,7 +13,7 @@ app.controller("OrderCtrl", function ($scope, $http,$window){
         $http({
             method: 'GET',
             headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
-            url: current_url + '/api/Carts/GetListCartAll',
+            url: current_url + '/api-admin/gio-hang/GetListCartAll',
         }).then(function (response) {
             $scope.listOrder = response.data;
             console.log($scope.listOrder);
@@ -24,7 +24,7 @@ app.controller("OrderCtrl", function ($scope, $http,$window){
         $http({
             method: 'PUT',
             headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
-            url: current_url + '/api/Carts/' + item.orderID +'/Update-Status',
+            url: current_url + '/api-admin/gio-hang/' + item.orderID +'/Update-Status',
         }).then(function (response) {
             $scope.LoadOrder();
             alert('Đã xác nhận giao hàng');
@@ -32,7 +32,7 @@ app.controller("OrderCtrl", function ($scope, $http,$window){
     }
 
     $scope.ChiTietDonHang = function(item) {
-        $window.location.href = 'cartDetail.html?email=' + item.email;
+        $window.location.href = 'cartDetail.html?email=' + item.email + '/' + item.orderID;
     }
     $scope.LoadOrder();
 });

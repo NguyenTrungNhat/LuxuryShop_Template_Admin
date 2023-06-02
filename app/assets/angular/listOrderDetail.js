@@ -17,7 +17,7 @@ app.controller("OrderDetailCtrl", function ($scope, $http,$window){
         $http({
             method: 'GET',
             headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
-            url: current_url + '/api/Carts/'+ $scope.value +'/GetListOrderByEmail',
+            url: current_url + '/api-admin/gio-hang/'+ $scope.value +'/GetListOrderByEmail',
         }).then(function (response) {
             $scope.listOrderDetail = response.data;
             console.log($scope.listOrderDetail);

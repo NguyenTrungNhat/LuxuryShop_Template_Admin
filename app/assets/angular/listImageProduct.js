@@ -16,7 +16,7 @@ app.controller("UserCtrl", function ($scope, $http,$window){
             method: 'POST',
             headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
             data: { page: $scope.page, pageSize: $scope.pageSize },
-            url: current_url + '/api/Product/getAllPaging',
+            url: current_url + '/api-admin/san-pham/getAllPaging',
         }).then(function (response) {
             $scope.listProducts = response.data.data;
             console.log($scope.listProducts)

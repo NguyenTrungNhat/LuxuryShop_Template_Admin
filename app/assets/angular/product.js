@@ -36,7 +36,7 @@ app.controller("ProductsCtrl", function ($scope, $http, $window) {
             method: 'POST',
             headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
             data: { page: $scope.page, pageSize: $scope.pageSize },
-            url: current_url + '/api/Product/getAllPaging',
+            url: current_url + '/api-admin/san-pham/getAllPaging',
         }).then(function (response) {
             $scope.listProducts = response.data.data;
             console.log($scope.listProducts)
@@ -67,7 +67,7 @@ app.controller("ProductsCtrl", function ($scope, $http, $window) {
                     'Content-Type': undefined
                 },
                 data: formData,
-                url: current_url + '/api/Product/CreateProduct',
+                url: current_url + '/api-admin/san-pham/CreateProduct',
             }).then(function (response) {
                 $scope.LoadProduct();
                 alert('Thêm sản phẩm thành công!');
@@ -88,7 +88,7 @@ app.controller("ProductsCtrl", function ($scope, $http, $window) {
                     'Content-Type': undefined
                 },
                 data: formData,
-                url: current_url + '/api/Product/Update-Product',
+                url: current_url + '/api-admin/san-pham/Update-Product',
             }).then(function (response) {
                 $scope.LoadProduct();
                 alert('Cập nhật sản phẩm thành công!');
@@ -102,7 +102,7 @@ app.controller("ProductsCtrl", function ($scope, $http, $window) {
         $http({
             method: 'GET',
             headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
-            url: current_url + '/api/Product/' + id+'/vi-VN',
+            url: current_url + '/api-admin/san-pham/' + id+'/vi-VN',
         }).then(function (response) {
             $scope.ProductID = response.data.productID;
             $scope.CatID = response.data.catID;
@@ -122,7 +122,7 @@ app.controller("ProductsCtrl", function ($scope, $http, $window) {
             $http({
                 method: 'DELETE',
                 headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
-                url: current_url + '/api/Product/' + id,
+                url: current_url + '/api-admin/san-pham/' + id,
             }).then(function (response) {
                 $scope.LoadProduct();
                 alert('Xóa thành công!');

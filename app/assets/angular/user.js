@@ -33,7 +33,7 @@ app.controller("UserCtrl", function ($scope, $http,$window){
             method: 'POST',
             headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
             data: { page: $scope.page, pageSize: $scope.pageSize },
-            url: current_url + '/api/users/getUsersPaging',
+            url: current_url + '/api-admin/user/getUsersPaging',
         }).then(function (response) {
             $scope.listUser = response.data.data;
             console.log($scope.listUser)
@@ -44,7 +44,7 @@ app.controller("UserCtrl", function ($scope, $http,$window){
         $http({
             method: 'GET',
             headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
-            url: current_url + '/api/Roles/GetAll',
+            url: current_url + '/api-admin/roles/GetAll',
         }).then(function (response) {
             $scope.listRole = response.data;
             console.log($scope.listRole);
@@ -76,7 +76,7 @@ app.controller("UserCtrl", function ($scope, $http,$window){
                     'Content-Type': undefined
                 },
                 data: formData,
-                url: current_url + '/api/Users/upload',
+                url: current_url + '/api-admin/user/upload',
             }).then(function (res) {
 
                 user.Thumb = res.data;
@@ -86,7 +86,7 @@ app.controller("UserCtrl", function ($scope, $http,$window){
                         method: 'POST',
                         headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
                         data: user,
-                        url: current_url + '/api/Users/register',
+                        url: current_url + '/api-admin/user/register',
                     }).then(function (response) {
                         $scope.LoadUser();
                         alert('Thêm user thành công!');
@@ -96,7 +96,7 @@ app.controller("UserCtrl", function ($scope, $http,$window){
                         method: 'POST',
                         headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
                         data: user,
-                        url: current_url + '/api/Users/update-user',
+                        url: current_url + '/api-admin/user/update-user',
                     }).then(function (response) {
                         $scope.LoadUser();
                         alert('Cập nhật user thành công!');
@@ -110,7 +110,7 @@ app.controller("UserCtrl", function ($scope, $http,$window){
                     method: 'POST',
                     headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
                     data: user,
-                    url: current_url + '/api/Users/register',
+                    url: current_url + '/api-admin/user/register',
                 }).then(function (response) {
                     $scope.LoadUser();
                     alert('Thêm user thành công!');
@@ -120,7 +120,7 @@ app.controller("UserCtrl", function ($scope, $http,$window){
                     method: 'POST',
                     headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
                     data: user,
-                    url: current_url + '/api/Users/update-user',
+                    url: current_url + '/api-admin/user/update-user',
                 }).then(function (response) {
                     $scope.LoadUser();
                     alert('Cập nhật user thành công!');
@@ -135,7 +135,7 @@ app.controller("UserCtrl", function ($scope, $http,$window){
         $http({
             method: 'GET',
             headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
-            url: current_url + '/api/Users/get-by-id/' + id,
+            url: current_url + '/api-admin/user/get-by-id/' + id,
         }).then(function (response) {
             let User = response.data;
             $scope.UserID = User.userID;
@@ -158,7 +158,7 @@ app.controller("UserCtrl", function ($scope, $http,$window){
             $http({
                 method: 'DELETE',                
                 headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
-                url: current_url + '/api/Users/delete-user/' + id,
+                url: current_url + '/apapi-admini/user/delete-user/' + id,
             }).then(function (response) {
                 $scope.LoadUser();
                 alert('Xóa thành công!');

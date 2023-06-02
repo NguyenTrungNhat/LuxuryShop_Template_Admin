@@ -5,7 +5,7 @@ app.controller("LoginCtrl", function ($scope, $http,$window){
         $http({
             method: 'POST', 
             data: { UserName: $scope.userName, Password: $scope.password },
-            url: current_url + '/api/Users/authenticate',
+            url: current_url + '/api-admin/user/authenticate',
         }).then(function (response) { 
             $scope.Token = response.data;
             console.log($scope.Token);

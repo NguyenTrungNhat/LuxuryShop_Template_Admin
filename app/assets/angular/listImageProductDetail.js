@@ -20,29 +20,29 @@ app.controller("UserCtrl", function ($scope, $http, $window) {
     $scope.submit = "Thêm mới";
 
 
-    $scope.Save = function () {
-        const formData = new FormData();
+    // $scope.Save = function () {
+    //     const formData = new FormData();
 
-        formData.append('Caption', $scope.Caption);
-        formData.append('IsDefault', $scope.IsDefault);
-        formData.append('SortOrder', Number($scope.SortOrder));
-        var file = document.getElementById('ImageFile').files[0];
-        formData.append('ImageFile', file);
-        $http({
-            method: 'POST',
-            transformRequest: angular.identity,
-            headers: {
-                "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token,
-                'Content-Type': undefined
-            },
-            data: formData,
-            url: current_url + '/api/Product/' + $scope.id + '/images',
-        }).then(function (response) {
-            $scope.LoadProduct();
-            alert('Thêm sản ảnh cho sản phẩm công!');
+    //     formData.append('Caption', $scope.Caption);
+    //     formData.append('IsDefault', $scope.IsDefault);
+    //     formData.append('SortOrder', Number($scope.SortOrder));
+    //     var file = document.getElementById('ImageFile').files[0];
+    //     formData.append('ImageFile', file);
+    //     $http({
+    //         method: 'POST',
+    //         transformRequest: angular.identity,
+    //         headers: {
+    //             "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token,
+    //             'Content-Type': undefined
+    //         },
+    //         data: formData,
+    //         url: current_url + '/api-admin/san-pham/' + 'images/' + $scope.id,
+    //     }).then(function (response) {
+    //         $scope.LoadProduct();
+    //         alert('Thêm ảnh cho sản phẩm công 1!');
 
-        });
-    };
+    //     });
+    // };
 
 
     $scope.Save = function () {
@@ -61,10 +61,10 @@ app.controller("UserCtrl", function ($scope, $http, $window) {
                     'Content-Type': undefined
                 },
                 data: formData,
-                url: current_url + '/api/Product/' + $scope.id + '/images',
+                url: current_url + '/api-admin/san-pham/' + 'images/' + $scope.id,
             }).then(function (response) {
                 $scope.LoadProduct();
-                alert('Thêm sản ảnh cho sản phẩm công!');
+                alert('Thêm ảnh cho sản phẩm công !');
 
             });
         } else {
@@ -80,7 +80,7 @@ app.controller("UserCtrl", function ($scope, $http, $window) {
                     'Content-Type': undefined
                 },
                 data: formData,
-                url: current_url + '/images/' + $scope.ListProductImageID,
+                url: current_url + '/api-admin/san-pham/images/' + $scope.ListProductImageID,
             }).then(function (response) {
                 $scope.LoadProduct();
                 alert('Cập nhật ảnh sản phẩm thành công!');
@@ -104,7 +104,7 @@ app.controller("UserCtrl", function ($scope, $http, $window) {
             $http({
                 method: 'DELETE',
                 headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
-                url: current_url + '/images/' + id,
+                url: current_url + '/api-admin/san-pham/images/' + id,
             }).then(function (response) {
                 $scope.LoadProduct();
                 alert('Xóa thành công!');
@@ -117,7 +117,7 @@ app.controller("UserCtrl", function ($scope, $http, $window) {
         $http({
             method: 'GET',
             headers: { "Authorization": 'Bearer ' + JSON.parse($window.sessionStorage.getItem("user")).token },
-            url: current_url + '/api/Product/' + $scope.id + '/image/GetListImage',
+            url: current_url + '/api-admin/san-pham/' + 'image/GetListImage/' + $scope.id ,
         }).then(function (response) {
             $scope.listImageProducts = response.data;
             console.log($scope.listImageProducts)
